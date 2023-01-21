@@ -1,4 +1,4 @@
-import { calculator, capitalize, reverseString } from "./script";
+import { caesarCipher, calculator, capitalize, reverseString } from "./script";
 
 test("First character is capitalized", () => {
   expect(capitalize("hello")).toBe("Hello");
@@ -25,4 +25,8 @@ describe("Calculator", () => {
     expect(calculator).toHaveProperty("multiply");
     expect(calculator.multiply(8, 2)).toEqual(16);
   });
+});
+
+test("String has each character shifted", () => {
+  expect(caesarCipher("Hello!", 1)).toBe("Ifmmp!");
 });

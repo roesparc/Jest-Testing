@@ -1,22 +1,66 @@
-export function capitalize(string) {
-  const firstToUpper = string.substring(0, 1).toUpperCase();
-  return firstToUpper + string.substring(1);
-}
+// The capitalize function takes a string and returns it with the first character capitalized.
 
-export function reverseString(string) {
-  const charArray = string.split("");
-  const reversedArray = [];
+export const capitalize = (string) => {
+  return string[0].toUpperCase() + string.slice(1);
+};
 
-  for (let i = charArray.length - 1; i >= 0; i--) {
-    reversedArray.push(charArray[i]);
+// The reverseString function takes a string and returns it reversed.
+
+export const reverseString = (string) => {
+  let reversedString = "";
+
+  for (let i = string.length - 1; i >= 0; i--) {
+    reversedString += string[i];
   }
 
-  return reversedArray.join("");
-}
+  return reversedString;
+};
+
+// The calculator object contains functions for the basic operations.
 
 export const calculator = {
   add: (a, b) => a + b,
   subtract: (a, b) => a - b,
   divide: (a, b) => a / b,
   multiply: (a, b) => a * b,
+};
+
+// The caesarCipher function takes a string and returns it with each character “shifted”.
+
+const getIndex = (index, shift) => {
+  let newIndex = index + shift;
+
+  if (newIndex < 0) {
+    newIndex = 26 + newIndex;
+  } else if (newIndex > 25) {
+    newIndex = newIndex - 26;
+  }
+
+  return newIndex;
+};
+
+export const caesarCipher = (string, shift) => {
+  const alphabetLower = "abcdefghijklmnopqrstuvwxyz";
+  const alphabetUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let shiftedString = "";
+
+  for (let character of string) {
+    if (
+      alphabetUpper.indexOf(character) === -1 &&
+      alphabetLower.indexOf(character) === -1
+    ) {
+      shiftedString += character;
+      continue;
+    }
+
+    if (character === character.toUpperCase()) {
+      const index = alphabetUpper.indexOf(character);
+      shiftedString += alphabetUpper[getIndex(index, shift)];
+    } else {
+      const index = alphabetLower.indexOf(character);
+      shiftedString += alphabetLower[getIndex(index, shift)];
+    }
+  }
+
+  return shiftedString;
 };
