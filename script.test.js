@@ -1,4 +1,10 @@
-import { caesarCipher, calculator, capitalize, reverseString } from "./script";
+import {
+  analyzeArray,
+  caesarCipher,
+  calculator,
+  capitalize,
+  reverseString,
+} from "./script";
 
 test("First character is capitalized", () => {
   expect(capitalize("hello")).toBe("Hello");
@@ -29,4 +35,13 @@ describe("Calculator", () => {
 
 test("String has each character shifted", () => {
   expect(caesarCipher("Hello!", 1)).toBe("Ifmmp!");
+});
+
+test("Returns the average, min, max, and length of an array", () => {
+  expect(analyzeArray([1, 8, 3, 4, 2, 6])).toEqual({
+    average: 4,
+    min: 1,
+    max: 8,
+    length: 6,
+  });
 });

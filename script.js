@@ -64,3 +64,30 @@ export const caesarCipher = (string, shift) => {
 
   return shiftedString;
 };
+
+// The analyzeArray function takes an array of numbers and returns an object with the following properties: average, min, max, and length.
+
+export const analyzeArray = (array) => {
+  let sum = 0;
+  let min = array[0];
+  let max = array[0];
+
+  for (let number of array) {
+    sum += number;
+
+    if (number < min) {
+      min = number;
+    }
+
+    if (number > max) {
+      max = number;
+    }
+  }
+
+  return {
+    average: sum / array.length,
+    min: min,
+    max: max,
+    length: array.length,
+  };
+};
